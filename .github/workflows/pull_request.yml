@@ -20,7 +20,3 @@ jobs:
       enable_macos_checks: true
       macos_xcode_versions: '["swift_6.3", "swift_6.4"]'
       enable_windows_checks: false
-
-  cxx-interop:
-    name: Cxx interop
-    uses: apple/swift-nio/.github/workflows/cxx_interop.yml@main

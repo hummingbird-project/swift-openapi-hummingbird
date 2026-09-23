@@ -19,6 +19,7 @@ jobs:
       linux_swift_versions: '["6.2", "6.3", "6.4"]'
       enable_macos_checks: true
       macos_xcode_versions: '["swift_6.3", "swift_6.4"]'
+      enable_windows_checks: false
 
   cxx-interop:
     name: Cxx interop

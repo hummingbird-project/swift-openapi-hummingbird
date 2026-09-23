@@ -12,11 +12,9 @@
 //
 //===----------------------------------------------------------------------===//
 
-import Foundation
-import HTTPTypes
-import Hummingbird
-import NIOHTTP1
-import OpenAPIRuntime
+public import HTTPTypes
+public import Hummingbird
+public import OpenAPIRuntime
 
 extension RouterMethods {
     /// Registers an HTTP operation handler at the provided path and method.
@@ -25,9 +23,10 @@ extension RouterMethods {
     ///   - method: An HTTP request method.
     ///   - path: The URL path components, for example `["pets", ":petId"]`.
     public func register(
-        _ handler: @escaping @Sendable (HTTPRequest, HTTPBody?, ServerRequestMetadata) async throws -> (
-            HTTPResponse, HTTPBody?
-        ),
+        _ handler:
+            @escaping @Sendable (HTTPRequest, HTTPBody?, ServerRequestMetadata) async throws -> (
+                HTTPResponse, HTTPBody?
+            ),
         method: HTTPRequest.Method,
         path: String
     ) {
@@ -88,12 +87,6 @@ extension Response {
     }
 }
 
-#if hasFeature(RetroactiveAttribute)
 extension Router: @retroactive ServerTransport {}
 extension RouterGroup: @retroactive ServerTransport {}
 extension RouteCollection: @retroactive ServerTransport {}
-#else
-extension Router: ServerTransport {}
-extension RouterGroup: ServerTransport {}
-extension RouteCollection: ServerTransport {}
-#endif
